@@ -28,5 +28,7 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 				1.0.0.3  2018.12.04  新增_mock与axios实战1
 				1.0.0.4  2018.12.04  新增_mock与axios实战2
 				1.0.0.5  2018.12.04  新增_vuex的使用
+				1.0.0.6  2018.12.04  引入_vue-axios测试
 
 //////////////////////////////////////////////
+1.src/appi/api.js文件，主要是使用的接口地址
