@@ -9,10 +9,14 @@ Mock.start(); //并且执行初始化函数
 
 Vue.config.productionTip = false
 
+
+import store from './vuex/store'; //  引入vuex实例
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
+  store, //注入
   components: { App },
   template: '<App/>'
 })

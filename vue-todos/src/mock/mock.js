@@ -96,5 +96,46 @@ export default {
         }, 200);
       });
     });
+    
+     // 修改标题
+    mock.onPost('/todo/editTodo').reply(config => {
+      let {
+        todo
+      } = JSON.parse(config.data);
+      Todos.some((t, index) => {
+        if (t.id === todo.id) {
+          t.title = todo.title;
+          t.locked = todo.locked;
+          t.isDelete = todo.isDelete;
+          return true;
+        }
+      });
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve([200]);
+        }, 200);
+      });
+    });
+    // 修改标题
+    mock.onPost('/todo/editRecord').reply(config => {
+      let {
+        id,
+        record,
+        index
+      } = JSON.parse(config.data);
+      Todos.some((t) => {
+        if (t.id === id) {
+          t.record[index] = record;
+          return true;
+        }
+      });
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve([200]);
+        }, 200);
+      });
+    });
+    
+    
   }
 };
