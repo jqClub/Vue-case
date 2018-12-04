@@ -25,5 +25,7 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 //	@author: 姜奇 (604799292@qq.com) 2018.12.04
 //	@version: 1.0.0.1  2018.12.04   新增_todo文件
 				1.0.0.2  2018.12.04   修改_组件的逻辑
+				1.0.0.3  2018.12.04  新增_mock与axios实战1
+				1.0.0.4  2018.12.04  新增_mock与axios实战2
 
 //////////////////////////////////////////////
