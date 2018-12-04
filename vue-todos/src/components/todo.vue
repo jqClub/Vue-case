@@ -53,9 +53,9 @@ export default {
         locked: false
       },
       items: [ //代办单项列表
-        { checked: false, text: '新的一天', isDelete: false },
-        { checked: false, text: '新的一天', isDelete: false },
-        { checked: false, text: '新的一天', isDelete: false }
+        { checked: false, text: '新的一天1', isDelete: false },
+        { checked: false, text: '新的一天2', isDelete: false },
+        { checked: false, text: '新的一天3', isDelete: false }
       ],
       text: '' //新增代办单项绑定的值
     }

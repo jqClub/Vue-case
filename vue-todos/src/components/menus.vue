@@ -18,7 +18,9 @@
   		return {
   			items: [{ title: '星期一', count: 1, locked: true }, //菜单的模拟数据
 	        { title: '星期二', count: 2, locked: true }, 
-	        {title: '星期三', count: 3, locked: false}]
+	        {title: '星期三', count: 3, locked: false},
+	        {title: '星期四', count: 4, locked: true},
+  			]
   		}
   	}
   };
