@@ -31,9 +31,9 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 参考:https://juejin.im/post/5ae432aaf265da0b9c1063c8
 使用的接口地址：https://easy-mock.com/mock/5c05f3b4119ec9640d826f40/example/mock
 
-
+需要先安装axios模块
 //12.05，使用axios的方法
-1.复制http整个文件夹
+1.复制src/http整个文件夹
 
 2.在main.js里添加
 // 导入 http 文件夹下的 index.js
