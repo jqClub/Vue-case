@@ -95,15 +95,17 @@ export default {
   },
    created() {
     // created生命周期，在实例已经创建完成，页面还没渲染时调用init方法。
+    //1.这个是使用mock里的接口https://easy-mock.com/mock/5c05f3b4119ec9640d826f40/example/mock
   		this.$api.mock().then(res => {
-  			log(1111, res)
+				log('mock返回-', typeof res)
+				log('mock返回-', res)
   		})
   		
-  		
+  		//2.这里使用的是自己的api接口，需要先打开express和mongod数据库
   		this.$api.upload().then(res => {
-  			log(222222, res)
+				log('express返回-', typeof res)
+				log('express返回-', res)
   		}).catch(function(errRes) {
-  			log(3333333, errRes)
   		})
   },
 }

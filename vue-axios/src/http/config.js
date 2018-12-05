@@ -1,3 +1,5 @@
+//默认配置参照 gitHub，以下只做示例：
+
 export default {
     method: 'post',
     // 基础url前缀
@@ -8,7 +10,7 @@ export default {
     },
     // 参数
     data: {},
-    // 设置超时时间
+    // 设置超时时间10s
     timeout: 10000,
     // 携带凭证
     withCredentials: false,

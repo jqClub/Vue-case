@@ -1,4 +1,4 @@
-// 倒入所有接口
+// 导入interface文件中所有接口
 import apiList from './interface'
 
 const install = Vue => {

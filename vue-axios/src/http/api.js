@@ -1,5 +1,8 @@
+var log = console.log.bind(console)
+
+//这里是所有的请求的处理+拦截器
 import axios from 'axios' // 注意先安装哦
-import config from './config.js' // 倒入默认配置
+import config from './config.js' // 导入默认配置
 import qs from 'qs' // 序列化请求数据，视服务端的要求
 
 export default function $axios (options) {
@@ -83,6 +86,10 @@ export default function $axios (options) {
 			// err.response = response
 
 			// throw err
+			log(typeof data)
+			//12.05新增，先转成json再传给前端
+			data = JSON.parse(data)
+			
           	return data
         },
         err => {

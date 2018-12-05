@@ -6,7 +6,7 @@ import router from './router'
 
 Vue.config.productionTip = false
 
-// 倒入 http 文件夹下的 index.js
+// 导入在 http 文件夹下的 index.js文件
 import api from './http/index'
 Vue.use(api)
 
