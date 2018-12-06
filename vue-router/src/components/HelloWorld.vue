@@ -38,7 +38,7 @@ export default {
     },
   },
   
-  
+ //12.06新增——这里是跟路由相关的 
 beforeRouteEnter (to, from, next) {
 //	log(1, to) 
 //  log(1, from)

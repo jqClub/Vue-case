@@ -1,3 +1,5 @@
+var log = console.log.bind(console)
+
 import Vue from 'vue'
 import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
@@ -14,9 +16,7 @@ const UserPosts = {
   template: '<div>UserPosts</div>'
 }
 
-
-//这里是页面中所有的路由信息
-export default new Router({
+var router = new Router({
   routes: [
     {
       path: '/',
@@ -59,3 +59,6 @@ export default new Router({
     },
   ]
 })
+
+//这里是页面中所有的路由信息
+export default router
