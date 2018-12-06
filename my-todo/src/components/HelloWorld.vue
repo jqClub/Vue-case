@@ -58,6 +58,9 @@ export default {
   },
   created: function() {
   	var that = this
+  	
+    //12.06新增，获取本地数据
+    that.todos = that.loadTodos()
   },
   methods: {
 // 主题设置
@@ -72,6 +75,7 @@ export default {
 			var index = e.target.dataset.index
 			that.themeNum = index
 		},
+		//新增一条数据
 		todoAdd() {
 			var that = this
 			//获取用户输入的内容
@@ -84,6 +88,9 @@ export default {
       that.todos.push(a)
       //清空原来的输入框
       that.message = '' 
+      
+      //缓存在本地
+      that.saveLocal()
 		},
 		todoDone(e) {
 			var that = this
@@ -92,11 +99,35 @@ export default {
 //			修改样式
 			var todo = that.todos[ind]
 			that.todos[ind].finish = !todo.finish
+			
+			//缓存在本地
+			that.saveLocal()
 		},
 		deleteThis(e) {
 			var that = this
 			var ind = e.target.dataset.ind
 			that.todos.splice(ind, 1)
+			
+			//缓存在本地
+			that.saveLocal()
+		},
+		//缓存数据在本地
+		saveLocal() {
+			var that = this
+			var todos = that.todos
+			var s = JSON.stringify(todos)
+    	localStorage.savedTodos = s
+		},
+		// 载入所有存储在 localStorage 里面的 todo
+ 		loadTodos() {
+		    var s = localStorage.savedTodos
+		    // 第一次打开的时候, 还没有存储这个数据, s 是 undefined
+		    if (s == undefined) {
+		        return []
+		    } else {
+		        var ts = JSON.parse(s)
+		        return ts
+		    }
 		},
   },
 }
