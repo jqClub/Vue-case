@@ -89,8 +89,8 @@ export default {
       //清空原来的输入框
       that.message = '' 
       
-      //缓存在本地
-      that.saveLocal()
+//    //缓存在本地
+//    that.saveLocal()
 		},
 		todoDone(e) {
 			var that = this
@@ -99,21 +99,22 @@ export default {
 //			修改样式
 			var todo = that.todos[ind]
 			that.todos[ind].finish = !todo.finish
-			
-			//缓存在本地
-			that.saveLocal()
+			log(1111111111111111111, that.todos)
+//			//缓存在本地
+//			that.saveLocal()
 		},
 		deleteThis(e) {
 			var that = this
 			var ind = e.target.dataset.ind
 			that.todos.splice(ind, 1)
 			
-			//缓存在本地
-			that.saveLocal()
+//			//缓存在本地
+//			that.saveLocal()
 		},
 		//缓存数据在本地
 		saveLocal() {
 			var that = this
+			log('saveLocal', that.todos)
 			var todos = that.todos
 			var s = JSON.stringify(todos)
     	localStorage.savedTodos = s
@@ -129,6 +130,17 @@ export default {
 		        return ts
 		    }
 		},
+  },
+  
+  //监听属性，在todos改变的时候，去缓存在本地，就不用在每次都去更新
+  watch: {
+		//需要使用深度监听对象里的改变值
+		todos: {
+	    deep: true,
+	    handler(val){
+	        this.saveLocal(val)
+	    }
+	  },
   },
 }
 </script>

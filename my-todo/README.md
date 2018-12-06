@@ -27,6 +27,7 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 			  1.0.0.2  2018.12.06   新增_切换主题的功能
 			  1.0.0.3  2018.12.06   新增_添加+完成+删除功能
 			  1.0.0.4  2018.12.06   新增_缓存在本地的功能
+			  1.0.0.5  2018.12.06   新增_使用深度监听todos的改变，不用再每个函数中去添加到缓存里面
 				
 
 //////////////////////////////////////////////
@@ -45,3 +46,14 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 //:data-index='index'
 //4.阻止点击事件冒泡
 //v-on:click.stop="deleteThis"
+//5.深度监听
+////监听属性，在todos改变的时候，去缓存在本地，就不用在每次都去更新
+//watch: {
+//		//需要使用深度监听对象里的改变值
+//		todos: {
+//	    deep: true,
+//	    handler(val){
+//	        this.saveLocal(val)
+//	    }
+//	  },
+//},
