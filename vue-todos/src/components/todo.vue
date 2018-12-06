@@ -21,12 +21,18 @@
         </a>
       </div>
       <!-- 显示标题和数字模块 -->
-      <h1 class="title-page" v-show="!isUpdate" @click="isUpdate = true">
+      <!--<h1 class="title-page" v-show="!isUpdate" @click="isUpdate = true">-->
+      <h1 class="title-page" v-show="!isUpdate" @click="clickAll">
         <span class="title-wrapper">{{todo.title}}</span>
         <!-- title:标题 绑定标题 -->
         <span class="count-list">{{todo.count || 0}}</span>
         <!-- count:数量 绑定代办单项熟练-->
       </h1>
+      
+      <!--<button @click="clickAll">
+      	<span data-clicktype="rule">测试点击</span>
+      </button>-->
+      
       <!-- 右边显示删除图标和锁定图标的模块 -->
       <div class="nav-group right" v-show="!isUpdate">
         <div class="options-web">
@@ -60,6 +66,7 @@
   </div>
 </template>
 <script>
+	var log = console.log.bind(console)
 
 import item from './item';
 import { addRecord, getTodo, editTodo } from '../api/api';
@@ -92,6 +99,8 @@ export default {
   },
   methods: {
     init() {
+    	var that = this
+    	
       const ID = this.$route.params.id;
       getTodo({ id: ID }).then(res => {
         let { id, title, count, isDelete, locked, record
@@ -104,6 +113,9 @@ export default {
           locked: locked,
           isDelete: isDelete
         };
+        
+        //防止点击切换的时候，还是显示的编辑的状态
+        that.isUpdate = false
       });
     },
     onAdd() {
@@ -134,6 +146,18 @@ export default {
     onlock() {
       this.todo.locked = !this.todo.locked;
       this.updateTodo();
+    },
+    //点击的事件
+    clickAll(e) {
+    	var that = this
+    	var locked = this.todo.locked
+    	if(!locked) {
+    		that.isUpdate = true
+    	}
+    	
+    	
+//  	var clickType = e.target.dataset.clicktype
+//  	log('点击的事件', clickType)
     }
   }
 };
