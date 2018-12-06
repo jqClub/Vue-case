@@ -131,8 +131,6 @@ var updateTodo = function(container, todoCell, event) {
 // 页面载入的时候, 把存储的 todos 数据插入到页面中
 var todos = loadTodos()
 
-
-
 // 添加的功能
 var todoAdd = () => {
     // 给 add button 绑定添加 todo 事件
@@ -225,6 +223,7 @@ var result = {
 	es,
 	bindEvent,
 	bindEventAll,
+	timeChange,
 }
 //12.06新增，导出需要的js文件
 export default result

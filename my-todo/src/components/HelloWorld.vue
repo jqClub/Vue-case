@@ -17,11 +17,16 @@
     <div id="todo">
         <div class="viewpart">
             <div class="newTask">
-                <input  id='id-input-todo' type="text" placeholder="在此输入待办事项">
-                <span  id='id-button-add' class="btn add">添加事项</span>
+                <input id='id-input-todo' v-model="message" placeholder="在此输入待办事项">
+                <span id='id-button-add' @click="todoAdd" class="btn add">添加事项</span>
             </div>
             <div class="todos" id="id-div-container">
-
+							<div v-for="(item, index) in todos" class="todoUl" @click="todoDone" :data-ind="index">
+		            <span class="todoState" :class="{ finished: item.finish }" :data-ind="index"></span>
+		            <span class="content todo-done" :class="{ active: item.finish }" :data-ind="index">{{item.task}}</span>
+		            <span class="timeAt" :data-ind="index">创建时间：{{item.createAt}}</span>
+		            <span v-on:click.stop="deleteThis" class="btn del todo-delete" :data-ind="index">删除</span>
+			        </div>
             </div>
         </div>
     </div>
@@ -43,7 +48,12 @@ export default {
 				0: 'theme-0',
 				1: 'theme-1',
 				2: 'theme-2',
-			}
+			},
+			
+			//用户输入的内容
+			message: '',
+			//下面的列表内容
+			todos: [],
     }
   },
   created: function() {
@@ -61,6 +71,32 @@ export default {
 			var that = this
 			var index = e.target.dataset.index
 			that.themeNum = index
+		},
+		todoAdd() {
+			var that = this
+			//获取用户输入的内容
+			var todo = that.message
+	    var a = {
+	        task: todo,
+	        finish: 0,
+	        createAt: common.timeChange()
+	    }
+      that.todos.push(a)
+      //清空原来的输入框
+      that.message = '' 
+		},
+		todoDone(e) {
+			var that = this
+			var ind = e.target.dataset.ind
+			log(ind)
+//			修改样式
+			var todo = that.todos[ind]
+			that.todos[ind].finish = !todo.finish
+		},
+		deleteThis(e) {
+			var that = this
+			var ind = e.target.dataset.ind
+			that.todos.splice(ind, 1)
 		},
   },
 }

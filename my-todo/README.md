@@ -25,6 +25,7 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 //	@author: 姜奇 (604799292@qq.com) 2018.12.06
 //	@version: 1.0.0.1  2018.12.06   新增_引入外部css和js文件
 			  1.0.0.2  2018.12.06   新增_切换主题的功能
+			  1.0.0.3  2018.12.06   新增_添加+完成+删除功能
 				
 
 //////////////////////////////////////////////
@@ -41,3 +42,5 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 //},
 //3.设置自定义属性
 //:data-index='index'
+//4.阻止点击事件冒泡
+//v-on:click.stop="deleteThis"
