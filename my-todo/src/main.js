@@ -13,7 +13,6 @@ import router from './router'
 //import common from '../static/common.js' //注意路径
 //Vue.prototype.$common = common
 
-
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

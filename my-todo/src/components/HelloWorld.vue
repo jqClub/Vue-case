@@ -1,25 +1,18 @@
 <template>
 	<!--最外层只能由一个div包裹-->
   <div>
-  	<div class="todo-left theme-0" data-ind='0'>
+  	<div class="todo-left" :class="themes[themeNum]" data-ind='{themeNum}'>
         <div class="logo">
-            <img src="../assets/rabbit.jpg" alt="logo">
+          <img src="../assets/rabbit.jpg" alt="logo">
         </div>
-        <div class="theme">
-            主题
+        <div class="theme" @click="showMenu">
+					主题
         </div>
-        <div class="theme-color">
-            <div class="themeL">
-                <span class="circle theme-0" data-index='0'></span>
-            </div>
-            <div class="themeL">
-                <span class="circle theme-1" data-index='1'></span>
-            </div>
-            <div class="themeL">
-                <span class="circle theme-2" data-index='2'></span>
-            </div>
+        <div class="theme-color" v-bind:class="{ show: showTheme }">
+        	<div class="themeL" v-for="(item, index) in 3">
+					    <span class="circle" :class="themes[index]" @click="showLight"  :data-index='index'></span>
+					</div>
         </div>
-
     </div>
     <div id="todo">
         <div class="viewpart">
@@ -38,16 +31,37 @@
 <script>
 		/*第二种，在组件中引入外部js文件*/
 	import common from '../../static/common.js' //注意路径
+	var log = common.log
 	
 export default {
   name: 'HelloWorld',
   data () {
     return {
-//    msg: 'Welcome to Your Vue.js App'
+			showTheme: false,
+			themeNum: 0,
+			themes: {
+				0: 'theme-0',
+				1: 'theme-1',
+				2: 'theme-2',
+			}
     }
   },
   created: function() {
   	var that = this
+  },
+  methods: {
+// 主题设置
+		showMenu() {
+			var that = this
+			var showTheme = that.showTheme
+			that.showTheme = !showTheme
+		},
+		// 鼠标点击切换样式
+		showLight(e) {
+			var that = this
+			var index = e.target.dataset.index
+			that.themeNum = index
+		},
   },
 }
 </script>
