@@ -56,9 +56,28 @@ var router = new Router({
           component: UserPosts
         },
       ],
+      beforeEnter(to,from,next){
+        console.log('router beforeEnter');
+        next();
+    	},
     },
   ]
 })
 
 //这里是页面中所有的路由信息
 export default router
+
+// 全局钩子
+router.beforeEach((to,from,next)=>{
+    console.log('global beforeEach')
+    next();
+});
+
+router.beforeResolve((to,from,next)=>{
+    console.log('global beforeResolve')
+    next();
+});
+
+router.afterEach((to,from,next)=>{
+    console.log('global afterEach')
+});

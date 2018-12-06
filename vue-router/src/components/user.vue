@@ -25,7 +25,7 @@ export default {
 　　　　　　　console.log(curVal,oldVal);
 					var newId = curVal.params.id
 					//这里改变了地址，监听变化，从而去修改
-					log(newId)
+					log('newId', newId)
 　　　　　},　　　
 	},
 }
