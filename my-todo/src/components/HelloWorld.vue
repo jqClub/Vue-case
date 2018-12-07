@@ -23,7 +23,7 @@
             <div class="todos" id="id-div-container">
 					<div v-for="(item, index) in todos" class="todoUl" @click="todoDone" :data-ind="index">
 			            <span class="todoState" :class="{ finished: item.finish }" :data-ind="index"></span>
-			            <span class="content todo-done" :class="{ active: item.finish }" :data-ind="index">{{item.task}}</span>
+			            <span class="content todo-done textOmit" :class="{ active: item.finish }" :data-ind="index">{{item.task}}</span>
 			            <span class="timeAt" :data-ind="index">创建时间：{{item.createAt}}</span>
 			            <span v-on:click.stop="deleteThis" class="btn del todo-delete" :data-ind="index">删除</span>
 			        </div>

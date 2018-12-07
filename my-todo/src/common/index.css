@@ -6,6 +6,19 @@
 body{
     font-family:"Helvetica Neue",Helvetica,Arial,"Hiragino Sans GB","Hiragino Sans GB W3","Microsoft YaHei UI","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
 }
+
+.test {
+	border: 1px solid black !important;
+}
+/*文字内容超过显示省略号*/
+.textOmit {
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+}
+
+
+/*------------------------------------------------------*/
 .app {
     position: relative;
     width: 500px;
@@ -17,10 +30,6 @@ body{
     /*background: blue;*/
     margin-top: 10px;
 
-}
-
-.test {
-	border: 1px solid black !important;
 }
 
 /*todo 输入框*/
