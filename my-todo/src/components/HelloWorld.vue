@@ -1,19 +1,9 @@
 <template>
 	<!--最外层只能由一个div包裹-->
   <div>
-  	<div class="todo-left" :class="themes[themeNum]" data-ind='{themeNum}'>
-        <div class="logo">
-          <img src="../assets/rabbit.jpg" alt="logo">
-        </div>
-        <div class="theme" @click="showMenu">
-					主题
-        </div>
-        <div class="theme-color" v-bind:class="{ show: showTheme }">
-        	<div class="themeL" v-for="(item, index) in 3">
-					    <span class="circle" :class="themes[index]" @click="showLight"  :data-index='index'></span>
-					</div>
-        </div>
-    </div>
+    <!--左边的组件-->
+    <left v-on:enlarge-text="showMenu" v-bind:title="leftTitle" ref="left"></left>
+    
     <div id="todo" class="">
         <div class="viewpart">
             <div class="newTask">
@@ -21,12 +11,14 @@
                 <span id='id-button-add' @click="todoAdd" class="btn add">添加事项</span>
             </div>
             <div class="todos" id="id-div-container">
-					<div v-for="(item, index) in todos" class="todoUl" @click="todoDone" :data-ind="index">
-			            <span class="todoState" :class="{ finished: item.finish }" :data-ind="index"></span>
-			            <span class="content todo-done textOmit" :class="{ active: item.finish }" :data-ind="index">{{item.task}}</span>
-			            <span class="timeAt" :data-ind="index">创建时间：{{item.createAt}}</span>
-			            <span v-on:click.stop="deleteThis" class="btn del todo-delete" :data-ind="index">删除</span>
-			        </div>
+				<div v-for="(item, index) in todos" class="todoUl" @click="todoDone" :data-ind="index">
+					<!--12.07引入todo的列表组件-->
+					<todo :item="item" :index="index" v-on:delete-this="deleteThis"></todo>
+		            <!--<span class="todoState" :class="{ finished: item.finish }" :data-ind="index"></span>
+		            <span class="content todo-done textOmit" :class="{ active: item.finish }" :data-ind="index">{{item.task}}</span>
+		            <span class="timeAt" :data-ind="index">创建时间：{{item.createAt}}</span>
+		            <span v-on:click.stop="deleteThis" class="btn del todo-delete" :data-ind="index">删除</span>-->
+		        </div>
             </div>
         </div>
     </div>
@@ -38,24 +30,33 @@
 	import common from '../../static/common.js' //注意路径
 	var log = common.log
 	
+	//12.07新增_引入左边的组件
+	import left from './left';
+	
+	//12.07新增_引入右边的列表组件
+	import todo from './todo';
+	
 export default {
   name: 'HelloWorld',
   data () {
     return {
-			showTheme: false,
-			themeNum: 0,
-			themes: {
-				0: 'theme-0',
-				1: 'theme-1',
-				2: 'theme-2',
-			},
-			
-			//用户输入的内容
-			message: '',
-			//下面的列表内容
-			todos: [],
+    	leftTitle: '主题',
+    	leftObj: {
+    		title: '主题',
+    		show: false,
+    	},
+		//用户输入的内容
+		message: '',
+		//下面的列表内容
+		todos: [],
     }
   },
+  //12.07新增_引入组件
+  components: {
+    left,
+    todo,
+  },
+  
   created: function() {
   	var that = this
   	
@@ -63,11 +64,15 @@ export default {
     that.todos = that.loadTodos()
   },
   methods: {
-// 主题设置
-		showMenu() {
+  	// 主题设置
+		showMenu(enlargeAmount) {
 			var that = this
-			var showTheme = that.showTheme
-			that.showTheme = !showTheme
+//			var showTheme = that.showTheme
+//			that.showTheme = !showTheme
+			
+//			log(22222222222, enlargeAmount.showTheme)
+			//可以通过$refs拿到子组件的事件
+			that.$refs.left.toggle();
 		},
 		// 鼠标点击切换样式
 		showLight(e) {
@@ -80,17 +85,14 @@ export default {
 			var that = this
 			//获取用户输入的内容
 			var todo = that.message
-	    var a = {
-	        task: todo,
-	        finish: 0,
-	        createAt: common.timeChange()
-	    }
-      that.todos.push(a)
-      //清空原来的输入框
-      that.message = '' 
-      
-//    //缓存在本地
-//    that.saveLocal()
+		    var a = {
+		        task: todo,
+		        finish: 0,
+		        createAt: common.timeChange()
+		    }
+			that.todos.push(a)
+			//清空原来的输入框
+			that.message = '' 
 		},
 		todoDone(e) {
 			var that = this
@@ -99,16 +101,16 @@ export default {
 //			修改样式
 			var todo = that.todos[ind]
 			that.todos[ind].finish = !todo.finish
-//			//缓存在本地
-//			that.saveLocal()
 		},
-		deleteThis(e) {
+//		deleteThis(e) {
+//			var that = this
+//			var ind = e.target.dataset.ind
+//			that.todos.splice(ind, 1)
+//		},
+		deleteThis(ind) {
 			var that = this
-			var ind = e.target.dataset.ind
+//			ind是子组件传递过去的值
 			that.todos.splice(ind, 1)
-			
-//			//缓存在本地
-//			that.saveLocal()
 		},
 		//缓存数据在本地
 		saveLocal() {
@@ -116,7 +118,7 @@ export default {
 			log('saveLocal', that.todos)
 			var todos = that.todos
 			var s = JSON.stringify(todos)
-    	localStorage.savedTodos = s
+    		localStorage.savedTodos = s
 		},
 		// 载入所有存储在 localStorage 里面的 todo
  		loadTodos() {
@@ -139,7 +141,7 @@ export default {
 	    handler(val){
 	        this.saveLocal(val)
 	    }
-	  },
+	},
   },
 }
 </script>

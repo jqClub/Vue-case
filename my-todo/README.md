@@ -28,10 +28,12 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 			  1.0.0.3  2018.12.06   新增_添加+完成+删除功能
 			  1.0.0.4  2018.12.06   新增_缓存在本地的功能
 			  1.0.0.5  2018.12.06   新增_使用深度监听todos的改变，不用再每个函数中去添加到缓存里面
-			  //重构，抽离出组件
+			 	//处理bug
 			  my-todo-1.0.0.6  2018.12.07   修改_处理列表超长，被挤出去的样式问题
 			  my-todo-1.0.0.7  2018.12.07   修改_文字过长，多余的显示成省略号
-				
+				//重构，抽离出组件
+				my-todo-1.0.1.0  2018.12.07   抽离左边的侧边栏组件
+				my-todo-1.0.1.1  2018.12.07   抽离_右边的列表组件
 
 //////////////////////////////////////////////
 //1.<!--组件中template，最外层只能由一个标签包裹-->
@@ -60,3 +62,19 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 //	    }
 //	  },
 //},
+//6.引入组件的方法
+//6.1.在组件中顶部引入
+//	import left from './left';
+//6.2.在组件中使用
+//export default {
+//name: 'HelloWorld',
+////加入组件
+//components: {
+//  left,
+//},
+//}
+//6.3.在页面中使用
+<!--<template>
+	<left></left>
+</template>-->
+//6.4通过ref,可以获取到子组件的所有方法
