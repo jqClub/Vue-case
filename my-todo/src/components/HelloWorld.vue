@@ -14,18 +14,18 @@
 					</div>
         </div>
     </div>
-    <div id="todo">
+    <div id="todo" class="">
         <div class="viewpart">
             <div class="newTask">
                 <input id='id-input-todo' v-model="message" placeholder="在此输入待办事项">
                 <span id='id-button-add' @click="todoAdd" class="btn add">添加事项</span>
             </div>
             <div class="todos" id="id-div-container">
-							<div v-for="(item, index) in todos" class="todoUl" @click="todoDone" :data-ind="index">
-		            <span class="todoState" :class="{ finished: item.finish }" :data-ind="index"></span>
-		            <span class="content todo-done" :class="{ active: item.finish }" :data-ind="index">{{item.task}}</span>
-		            <span class="timeAt" :data-ind="index">创建时间：{{item.createAt}}</span>
-		            <span v-on:click.stop="deleteThis" class="btn del todo-delete" :data-ind="index">删除</span>
+					<div v-for="(item, index) in todos" class="todoUl" @click="todoDone" :data-ind="index">
+			            <span class="todoState" :class="{ finished: item.finish }" :data-ind="index"></span>
+			            <span class="content todo-done" :class="{ active: item.finish }" :data-ind="index">{{item.task}}</span>
+			            <span class="timeAt" :data-ind="index">创建时间：{{item.createAt}}</span>
+			            <span v-on:click.stop="deleteThis" class="btn del todo-delete" :data-ind="index">删除</span>
 			        </div>
             </div>
         </div>
@@ -99,7 +99,6 @@ export default {
 //			修改样式
 			var todo = that.todos[ind]
 			that.todos[ind].finish = !todo.finish
-			log(1111111111111111111, that.todos)
 //			//缓存在本地
 //			that.saveLocal()
 		},
