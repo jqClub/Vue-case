@@ -28,6 +28,12 @@ export default {
 		todoAdd() {
 			var that = this
 			var message = that.message
+			//12.10新增，输入为空时的提示信息
+			if(!message) {
+				alert('-输入内容为空-')
+				return
+			}
+			
 			//清空原来的输入框
 			that.message = '' 
 			

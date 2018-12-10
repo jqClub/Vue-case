@@ -241,3 +241,10 @@ body{
     /**/
     transition: color 0.8s ease, background 0.8s ease;
 }
+
+/*12.10新增，列表为空时的提示信息*/
+.list-empty {
+	text-align: center;
+	margin-top: 150px;
+	color: #333333;
+}
