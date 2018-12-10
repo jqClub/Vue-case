@@ -13,7 +13,7 @@
             <!--12.07todo-input输入组件-->
             <totoInput @add-this="todoAdd"></totoInput>
             <div class="todos" id="id-div-container">
-				<template v-if="todos.length">
+				<div v-if="todos.length" style="margin-bottom: 100px;">
 					<div v-for="(item, index) in todos" :key="index" class="todoUl" @click="todoDone" :data-ind="index">
 						<!--12.07引入todo的列表组件-->
 						<todo :item="item" :index="index" v-on:delete-this="deleteThis"></todo>
@@ -22,7 +22,8 @@
 			            <span class="timeAt" :data-ind="index">创建时间：{{item.createAt}}</span>
 			            <span v-on:click.stop="deleteThis" class="btn del todo-delete" :data-ind="index">删除</span>-->
 			        </div>
-				</template>
+				</div>
+				<!--12.10新增_处理列表为空时的提示信息-->
 		        <div v-else class="list-empty">待办列表为空，快去添加吧</div>
             </div>
         </div>
