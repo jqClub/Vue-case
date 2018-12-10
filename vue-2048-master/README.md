@@ -24,3 +24,4 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 //////////////////////////////////////////////
 //	@author: 姜奇 (604799292@qq.com) 2018.12.10
 //	@version: vue-2048-master-1.0.0.1  2018.12.10  新增_2048小游戏
+			  vue-2048-master-1.0.0.2  2018.12.10  新增_备注信息
