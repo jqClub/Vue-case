@@ -43,17 +43,13 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-//  assetsPublicPath: '/',
-//12.10上线打包的配置信息
-		ssetsPublicPath: './',
-//	在config/index.js文件中，设置productionSourceMap: false,就可以不生成.map文件
-		productionSourceMap: false,
+    assetsPublicPath: './',
 
     /**
      * Source Maps
      */
 
-//  productionSourceMap: true,
+    productionSourceMap: true,
     // https://webpack.js.org/configuration/devtool/#production
     devtool: '#source-map',
 
