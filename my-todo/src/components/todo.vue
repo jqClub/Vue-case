@@ -27,8 +27,8 @@ export default {
 		//删除当前的记录
 		deleteThis(e) {
 			var that = this
-			var index = e.target.dataset.index
-			that.$emit('delete-this', index)
+			var ind = e.target.dataset.ind
+			that.$emit('delete-this', ind)
 		},
   },
 }

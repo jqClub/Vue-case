@@ -39,7 +39,8 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 				my-todo-1.0.1.3  2018.12.10   新增_列表为空的提示信息+输入空时的提示
 				my-todo-1.0.1.4  2018.12.10   新增_引入messagebox弹窗
 				my-todo-1.0.1.5  2018.12.10   修改_列表到底的间距
-
+				my-todo-1.0.1.6  2018.12.10   修改_删除时index的bug
+				
 //////////////////////////////////////////////
 //1.<!--组件中template，最外层只能由一个标签包裹-->
 //2.不建议在methods中，使用箭头函数,打印的2个this值不同。应该使用第二种方法

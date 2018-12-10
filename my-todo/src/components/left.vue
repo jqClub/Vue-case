@@ -15,9 +15,9 @@
 </template>
 
 <script>
-		/*第二种，在组件中引入外部js文件*/
-	import common from '../../static/common.js' //注意路径
-	var log = common.log
+/*第二种，在组件中引入外部js文件*/
+import common from '../../static/common.js' //注意路径
+var log = common.log
 	
 export default {
   name: 'left',
