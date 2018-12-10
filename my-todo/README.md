@@ -34,6 +34,8 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 				//重构，抽离出组件
 				my-todo-1.0.1.0  2018.12.07   抽离左边的侧边栏组件
 				my-todo-1.0.1.1  2018.12.07   抽离_右边的列表组件
+				//抽离出组件
+				my-todo-1.0.1.2  2018.12.10   抽离_输入框的组件
 
 //////////////////////////////////////////////
 //1.<!--组件中template，最外层只能由一个标签包裹-->

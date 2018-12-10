@@ -6,10 +6,12 @@
     
     <div id="todo" class="">
         <div class="viewpart">
-            <div class="newTask">
+            <!--<div class="newTask">
                 <input id='id-input-todo' v-model="message" placeholder="在此输入待办事项">
                 <span id='id-button-add' @click="todoAdd" class="btn add">添加事项</span>
-            </div>
+            </div>-->
+            <!--12.07todo-input输入组件-->
+            <totoInput @add-this="todoAdd"></totoInput>
             <div class="todos" id="id-div-container">
 				<div v-for="(item, index) in todos" class="todoUl" @click="todoDone" :data-ind="index">
 					<!--12.07引入todo的列表组件-->
@@ -36,6 +38,9 @@
 	//12.07新增_引入右边的列表组件
 	import todo from './todo';
 	
+	//12.10新增_引入todo-input输入组件
+	import totoInput from './totoInput';
+	
 export default {
   name: 'HelloWorld',
   data () {
@@ -55,6 +60,7 @@ export default {
   components: {
     left,
     todo,
+    totoInput,
   },
   
   created: function() {
@@ -81,18 +87,26 @@ export default {
 			that.themeNum = index
 		},
 		//新增一条数据
-		todoAdd() {
+		todoAdd(todo) {
 			var that = this
-			//获取用户输入的内容
-			var todo = that.message
+			//12.10修改，通过组件来传递数据(//获取用户输入的内容)
+			log('从todoInput传递过来的数据', todo)
 		    var a = {
 		        task: todo,
 		        finish: 0,
 		        createAt: common.timeChange()
 		    }
 			that.todos.push(a)
-			//清空原来的输入框
-			that.message = '' 
+//			//获取用户输入的内容
+//			var todo = that.message
+//		    var a = {
+//		        task: todo,
+//		        finish: 0,
+//		        createAt: common.timeChange()
+//		    }
+//			that.todos.push(a)
+//			//清空原来的输入框
+//			that.message = '' 
 		},
 		todoDone(e) {
 			var that = this
