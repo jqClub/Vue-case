@@ -40,6 +40,7 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 				my-todo-1.0.1.4  2018.12.10   新增_引入messagebox弹窗
 				my-todo-1.0.1.5  2018.12.10   修改_列表到底的间距
 				my-todo-1.0.1.6  2018.12.10   修改_删除时index的bug
+				my-todo-1.0.1.7  2018.12.10   新增_打包成线上的包
 				
 //////////////////////////////////////////////
 //1.<!--组件中template，最外层只能由一个标签包裹-->
