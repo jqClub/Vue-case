@@ -27,10 +27,11 @@ export default {
   methods: {		
 		todoAdd() {
 			var that = this
+
 			var message = that.message
 			//12.10新增，输入为空时的提示信息
 			if(!message) {
-				alert('-输入内容为空-')
+				this.$toast('-输入内容为空-');
 				return
 			}
 			

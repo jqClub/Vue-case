@@ -37,6 +37,7 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 				//抽离出组件
 				my-todo-1.0.1.2  2018.12.10   抽离_输入框的组件
 				my-todo-1.0.1.3  2018.12.10   新增_列表为空的提示信息+输入空时的提示
+				my-todo-1.0.1.4  2018.12.10   新增_引入messagebox弹窗
 
 //////////////////////////////////////////////
 //1.<!--组件中template，最外层只能由一个标签包裹-->
