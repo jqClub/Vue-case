@@ -22,10 +22,10 @@ export default {
 	//这里使用监听属性来，刷新页面
 	watch:{
 　　　　　$route(curVal,oldVal){
-　　　　　　　console.log(curVal,oldVal);
-					var newId = curVal.params.id
-					//这里改变了地址，监听变化，从而去修改
-					log('newId', newId)
+						console.log(curVal,oldVal);
+						var newId = curVal.params.id
+						//这里改变了地址，监听变化，从而去修改
+						log('newId', newId)
 　　　　　},　　　
 	},
 }

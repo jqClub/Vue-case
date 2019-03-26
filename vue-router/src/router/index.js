@@ -17,6 +17,7 @@ const UserPosts = {
 }
 
 var router = new Router({
+//	mode:'history',
   routes: [
     {
       path: '/',
@@ -32,6 +33,14 @@ var router = new Router({
     //重定向
     {
     	path: '/a', 
+			redirect: { 
+				path: '/user/1',
+				component: user,
+			},
+    },
+
+    {
+    	path: '/user', 
 			redirect: { 
 				path: '/user/1',
 				component: user,
