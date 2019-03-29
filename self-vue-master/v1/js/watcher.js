@@ -1,8 +1,10 @@
 function Watcher(vm, exp, cb) {
+	log('Watcher', vm, exp, cb)
     this.cb = cb;
     this.vm = vm;
+    
     this.exp = exp;
-    this.value = this.get();  // 将自己添加到订阅器的操作
+    this.value = this.get();  // 将自己添加到订阅器的操作 
 }
 
 Watcher.prototype = {
@@ -14,7 +16,8 @@ Watcher.prototype = {
         var oldVal = this.value;
         if (value !== oldVal) {
             this.value = value;
-            this.cb.call(this.vm, value, oldVal);
+//          this.cb.call(this.vm, value, oldVal);
+			this.cb(value, oldVal);
         }
     },
     get: function() {

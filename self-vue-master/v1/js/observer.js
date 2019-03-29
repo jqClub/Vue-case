@@ -10,6 +10,7 @@ Observer.prototype = {
         });
     },
     defineReactive: function(data, key, val) {
+    	var self = this
     	//监听函数
         var dep = new Dep();
         var childObj = observe(val);
@@ -17,14 +18,13 @@ Observer.prototype = {
             enumerable: true,
             configurable: true,
             get: function() {
-            	log(111111111111)
+            	//把watcher挂在dep上
                 if (Dep.target) {
                     dep.addSub(Dep.target);
                 }
                 return val;
             },
             set: function(newVal) {
-            	log(222222222)
                 if (newVal === val) {
                     return;
                 }
